@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
             {
                 for (int i = 0; i < 200; i++)
                 {
-                    Vector3 Coordinate = new Vector3(Random.Range(30, -30), Random.Range(10, -10), Random.Range(0, -50));
+                    Vector3 Coordinate = new Vector3(Random.Range(40, -40), Random.Range(10, -10), Random.Range(-10, -70));
                     Instantiate(Debris[Random.Range(0, 5)], Coordinate, Quaternion.Euler(Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360)));
                 }
 

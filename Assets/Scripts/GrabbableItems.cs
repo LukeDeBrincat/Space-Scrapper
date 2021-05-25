@@ -26,7 +26,6 @@ public class GrabbableItems : OVRGrabbable
         base.GrabBegin(hand, grabPoint);
         renderer.material = chosen;
         GetComponent<Debris>().touching = true;
-        Tr.enabled = true;
         Tr.material = chosen;
         Ps.material = chosen;
 
@@ -36,6 +35,7 @@ public class GrabbableItems : OVRGrabbable
     {
         base.GrabEnd(linearVelocity * 5, angularVelocity);
         A.Play();
+        Tr.enabled = true;
 
     }
 }

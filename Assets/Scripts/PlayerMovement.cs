@@ -13,7 +13,6 @@ public class PlayerMovement : MonoBehaviour
     public AudioSource Music;
 
     private bool Playing;
-    private bool Playing2;
 
     // Start is called before the first frame update
     void Start()

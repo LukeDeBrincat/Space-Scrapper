@@ -11,7 +11,8 @@ public class Debris : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        hidden = materials[Random.Range(0, 3)];
+        hidden = materials[Random.Range(0, 4)];
+        GetComponent<MeshRenderer>().material = hidden;
     }
 
     // Update is called once per frame

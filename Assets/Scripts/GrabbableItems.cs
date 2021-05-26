@@ -5,7 +5,6 @@ using UnityEngine;
 public class GrabbableItems : OVRGrabbable
 {
     private Renderer renderer;
-    private TrailRenderer Tr = null;
     public ParticleSystemRenderer Ps;
     public ParticleSystem A;
 
@@ -14,8 +13,6 @@ public class GrabbableItems : OVRGrabbable
     {
         base.Start();
         renderer = GetComponent<MeshRenderer>();
-        Tr = GetComponent<TrailRenderer>();
-        Tr.enabled = false;
 
         Ps = A.GetComponent<ParticleSystemRenderer>();
     }
@@ -26,7 +23,6 @@ public class GrabbableItems : OVRGrabbable
         base.GrabBegin(hand, grabPoint);
         renderer.material = chosen;
         GetComponent<Debris>().touching = true;
-        Tr.material = chosen;
         Ps.material = chosen;
 
     }
@@ -35,7 +31,6 @@ public class GrabbableItems : OVRGrabbable
     {
         base.GrabEnd(linearVelocity * 5, angularVelocity);
         A.Play();
-        Tr.enabled = true;
 
     }
 }

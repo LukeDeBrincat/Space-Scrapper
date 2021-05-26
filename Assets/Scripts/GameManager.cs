@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
 
     float currenttime = 0f;
     float startingtime = 60f;
-    float minutesLeft = 6;
+    float minutesLeft = 1;
 
     public bool GameStarted;
     public bool tutorial;

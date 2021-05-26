@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.043671943, g: 0.04485526, b: 0.059587955, a: 1}
+  m_IndirectSpecularColor: {r: 0.043560747, g: 0.04494225, b: 0.05917211, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -194,7 +194,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 4a276efd6ca96f14888ed0a466aac74b, type: 2}
+      objectReference: {fileID: 2100000, guid: 94941b117dd44e44fac8af15137e36dc, type: 2}
     - target: {fileID: 65820338247890050, guid: 0b50edd1ab1ea9c4ba8edc42f1b15181,
         type: 3}
       propertyPath: m_IsTrigger
@@ -413,7 +413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameManager: {fileID: 1436144915}
-  colour: {fileID: 2100000, guid: 4a276efd6ca96f14888ed0a466aac74b, type: 2}
+  colour: {fileID: 2100000, guid: 94941b117dd44e44fac8af15137e36dc, type: 2}
   Yay: {fileID: 25597528}
   Nay: {fileID: 25597529}
 --- !u!54 &25597531
@@ -965,7 +965,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9.25
+      value: -20.29
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1031,7 +1031,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 816b6eab58d24c646a55f35fb63b0f1f, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.099
+  m_Volume: 0.53
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1312,6 +1312,10 @@ PrefabInstance:
     - target: {fileID: 422740, guid: ba1fa4a8c66106b4988c88fe4b8e8502, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 11477634, guid: ba1fa4a8c66106b4988c88fe4b8e8502, type: 3}
+      propertyPath: m_parentHeldObject
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba1fa4a8c66106b4988c88fe4b8e8502, type: 3}
@@ -1882,7 +1886,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 45996da20d24bd94b955175bd017c267, type: 2}
+      objectReference: {fileID: 2100000, guid: c3e6b0ade79cde546964c853d3388e57, type: 2}
     - target: {fileID: 65820338247890050, guid: 0b50edd1ab1ea9c4ba8edc42f1b15181,
         type: 3}
       propertyPath: m_IsTrigger
@@ -2101,7 +2105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameManager: {fileID: 1436144915}
-  colour: {fileID: 2100000, guid: 45996da20d24bd94b955175bd017c267, type: 2}
+  colour: {fileID: 2100000, guid: c3e6b0ade79cde546964c853d3388e57, type: 2}
   Yay: {fileID: 900114462}
   Nay: {fileID: 900114463}
 --- !u!54 &900114465
@@ -2780,12 +2784,12 @@ PrefabInstance:
     - target: {fileID: 5275277326979484811, guid: 3deb326b90e108c40868681a25ae6016,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.3612576
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5275277326979484811, guid: 3deb326b90e108c40868681a25ae6016,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.1846986
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5275277326979484811, guid: 3deb326b90e108c40868681a25ae6016,
         type: 3}
@@ -2825,13 +2829,13 @@ PrefabInstance:
     - target: {fileID: 5405535208760996062, guid: 3deb326b90e108c40868681a25ae6016,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5405535208760996062, guid: 3deb326b90e108c40868681a25ae6016,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 749b9069dc4742c5bfa5c74644049926, type: 2}
+      objectReference: {fileID: 2100000, guid: 67c8d3cd44cf08c4c918fe629958d6fd, type: 2}
     - target: {fileID: 5405535208760996062, guid: 3deb326b90e108c40868681a25ae6016,
         type: 3}
       propertyPath: m_Positions.Array.data[0].z
@@ -2845,7 +2849,22 @@ PrefabInstance:
     - target: {fileID: 5405535208760996062, guid: 3deb326b90e108c40868681a25ae6016,
         type: 3}
       propertyPath: m_Parameters.widthMultiplier
-      value: 0.1
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 5405535208760996062, guid: 3deb326b90e108c40868681a25ae6016,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.ctime0
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5405535208760996062, guid: 3deb326b90e108c40868681a25ae6016,
+        type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5405535208760996062, guid: 3deb326b90e108c40868681a25ae6016,
+        type: 3}
+      propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
+      value: 0.9914532
       objectReference: {fileID: 0}
     - target: {fileID: 7633462340687132264, guid: 3deb326b90e108c40868681a25ae6016,
         type: 3}
@@ -3701,7 +3720,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 5b9c7f8fbb09ec94091ff88d511066b3, type: 2}
+      objectReference: {fileID: 2100000, guid: 9a235463b3e43b248a48a74cf71c0d67, type: 2}
     - target: {fileID: 65820338247890050, guid: 0b50edd1ab1ea9c4ba8edc42f1b15181,
         type: 3}
       propertyPath: m_IsTrigger
@@ -3920,7 +3939,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameManager: {fileID: 1436144915}
-  colour: {fileID: 2100000, guid: 5b9c7f8fbb09ec94091ff88d511066b3, type: 2}
+  colour: {fileID: 2100000, guid: 9a235463b3e43b248a48a74cf71c0d67, type: 2}
   Yay: {fileID: 1544176113}
   Nay: {fileID: 1544176114}
 --- !u!54 &1544176116
@@ -4144,7 +4163,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 99d6290f726c901439aed0174b17e537, type: 2}
+      objectReference: {fileID: 2100000, guid: 609f3813497aee647a3c7ed0bbb14c3e, type: 2}
     - target: {fileID: 65820338247890050, guid: 0b50edd1ab1ea9c4ba8edc42f1b15181,
         type: 3}
       propertyPath: m_IsTrigger
@@ -4363,7 +4382,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameManager: {fileID: 1436144915}
-  colour: {fileID: 2100000, guid: 99d6290f726c901439aed0174b17e537, type: 2}
+  colour: {fileID: 2100000, guid: 609f3813497aee647a3c7ed0bbb14c3e, type: 2}
   Yay: {fileID: 1719305517}
   Nay: {fileID: 1719305518}
 --- !u!54 &1719305520

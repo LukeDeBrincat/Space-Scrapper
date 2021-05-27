@@ -24,8 +24,19 @@ public class GameManager : MonoBehaviour
     public GameObject FinalPoints;
     public GameObject FinalRank;
     public GameObject MainMenu;
+    public GameObject TutorialMarker;
+
+    public LineRenderer pointer;
 
     private bool Spawned = false;
+
+    public int tutorialIndex;
+
+    public AudioSource Tutorial1;
+    public AudioSource Tutorial2;
+    public AudioSource Tutorial3;
+    public GameObject Spawnpoint1;
+    public GameObject Spawnpoint2;
 
     // Start is called before the first frame update
     void Start()
@@ -41,8 +52,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(GameStarted == true)
+        if (GameStarted == true)
         {
+            pointer.enabled = false;
+
             if (Spawned == false)
             {
                 for (int i = 0; i < 200; i++)
@@ -70,7 +83,7 @@ public class GameManager : MonoBehaviour
             if (minutesLeft < 0)
             {
                 GameObject[] a = GameObject.FindGameObjectsWithTag("Debris");
-                
+
                 for (int i = 0; i < a.Length; i++)
                 {
                     Destroy(a[i].gameObject);
@@ -85,10 +98,19 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        else if (tutorial == true)
+        {
+            TutorialRunThrough();
+
+            pointer.enabled = false;
+        }
+
+
         else
         {
             Points.SetActive(false);
             Timer.SetActive(false);
+            pointer.enabled = true;
         }
 
     }
@@ -122,6 +144,7 @@ public class GameManager : MonoBehaviour
         StartButton.SetActive(false);
         Tutorial.SetActive(false);
         Quit.SetActive(false);
+        tutorialIndex = 0;
     }
 
     public void Close()
@@ -170,5 +193,37 @@ public class GameManager : MonoBehaviour
         StartButton.SetActive(true);
         Tutorial.SetActive(true);
         Quit.SetActive(true);
+        FinalPoints.SetActive(false);
+        FinalRank.SetActive(false);
+        MainMenu.SetActive(false);
+    }
+
+    private void TutorialRunThrough()
+    {
+        if (tutorialIndex == 0)
+        {
+            //Tutorial1.Play();
+            Instantiate(TutorialMarker, Spawnpoint1.transform.position, transform.rotation);
+            tutorialIndex++;
+        }
+
+        else if (tutorialIndex == 2)
+        {
+            //Tutorial2.Play();
+            Instantiate(TutorialMarker, Spawnpoint2.transform.position, transform.rotation);
+            tutorialIndex++;
+        }
+
+        else if (tutorialIndex == 4)
+        {
+            Instantiate(Debris[0], Spawnpoint1.transform.position, transform.rotation);
+            tutorialIndex++;
+            //Tutorial3.Play();
+        }
+
+        else if (tutorialIndex == 6)
+        {
+            Menu();
+        }
     }
 }

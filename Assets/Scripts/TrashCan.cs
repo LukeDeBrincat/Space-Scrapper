@@ -16,8 +16,16 @@ public class TrashCan : MonoBehaviour
         {
             if (other.GetComponent<Debris>().hidden == colour)
             {
-                GameManager.GetComponent<GameManager>().points += 20;
-                Yay.Play();
+                if (GameManager.GetComponent<GameManager>().GameStarted)
+                {
+                    GameManager.GetComponent<GameManager>().points += 20;
+                    Yay.Play();
+                }
+
+                else
+                {
+                    GameManager.GetComponent<GameManager>().tutorialIndex++;
+                }
             }
 
             else

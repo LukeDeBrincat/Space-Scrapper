@@ -14,6 +14,11 @@ public class PlayerMovement : MonoBehaviour
 
     private bool Playing;
 
+    public ParticleSystem Righthand;
+    public ParticleSystem LeftHand;
+
+    public Transform spawn;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +43,8 @@ public class PlayerMovement : MonoBehaviour
                 Thruster.Play();
                 Playing = true;
             }
+
+            Righthand.Play();
         }
 
         else if (OVRInput.Get(OVRInput.Button.Three) == true)
@@ -49,12 +56,22 @@ public class PlayerMovement : MonoBehaviour
                 Thruster.Play();
                 Playing = true;
             }
+
+            LeftHand.Play();
         }
 
         else
         {
             Thruster.Stop();
             Playing = false;
+            Righthand.Stop();
+            LeftHand.Stop();
+        }
+
+        if (OVRInput.Get(OVRInput.Button.Two) == true)
+        {
+            transform.position = spawn.position;
+            GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
     }
 }

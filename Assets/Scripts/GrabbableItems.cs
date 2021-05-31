@@ -8,6 +8,8 @@ public class GrabbableItems : OVRGrabbable
     public ParticleSystemRenderer Ps;
     public ParticleSystem A;
 
+    public GameObject GameManager;
+
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -15,15 +17,31 @@ public class GrabbableItems : OVRGrabbable
         renderer = GetComponent<MeshRenderer>();
 
         Ps = A.GetComponent<ParticleSystemRenderer>();
+
+        GameManager = GameObject.Find("GameManager");
     }
 
     public override void GrabBegin(OVRGrabber hand, Collider grabPoint)
     {
-        Material chosen = GetComponent<Debris>().hidden;
-        base.GrabBegin(hand, grabPoint);
-        renderer.material = chosen;
-        GetComponent<Debris>().touching = true;
-        Ps.material = chosen;
+
+        if (GameManager.GetComponent<GameManager>().tutorial == false)
+        {
+            Material chosen = GetComponent<Debris>().hidden;
+            base.GrabBegin(hand, grabPoint);
+            renderer.material = chosen;
+            GetComponent<Debris>().touching = true;
+            Ps.material = chosen;
+        }
+
+        else
+        {
+            Material chosen = GetComponent<Debris>().hidden;
+            base.GrabBegin(hand, grabPoint);
+            renderer.material = chosen;
+            GetComponent<Debris>().touching = true;
+            Ps.material = chosen;
+            GameManager.GetComponent<GameManager>().Tutorial5.Play();
+        }
 
     }
 

@@ -10,6 +10,9 @@ public class TrashCan : MonoBehaviour
     public AudioSource Yay;
     public AudioSource Nay;
 
+    public AudioSource HitRightBin;
+    public AudioSource HitWrongBin;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.transform.tag == "Debris")
@@ -25,13 +28,23 @@ public class TrashCan : MonoBehaviour
                 else
                 {
                     GameManager.GetComponent<GameManager>().tutorialIndex++;
+                    GameManager.GetComponent<GameManager>().Tutorial6.Play();
                 }
             }
 
             else
             {
-                GameManager.GetComponent<GameManager>().points -= 10;
-                Nay.Play();
+                if (GameManager.GetComponent<GameManager>().GameStarted)
+                {
+                    GameManager.GetComponent<GameManager>().points -= 10;
+                    Nay.Play();
+                }
+
+                else
+                {
+                    GameManager.GetComponent<GameManager>().tutorialIndex++;
+                    GameManager.GetComponent<GameManager>().Tutorial6.Play();
+                }
             }
 
             Destroy(other.gameObject);

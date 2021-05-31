@@ -125,6 +125,7 @@ MonoBehaviour:
   m_grabPoints: []
   Ps: {fileID: 0}
   A: {fileID: 4076012250478973791}
+  GameManager: {fileID: 0}
 --- !u!135 &1198870030949863689
 SphereCollider:
   m_ObjectHideFlags: 0

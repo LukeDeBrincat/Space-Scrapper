@@ -35,8 +35,12 @@ public class GameManager : MonoBehaviour
     public AudioSource Tutorial1;
     public AudioSource Tutorial2;
     public AudioSource Tutorial3;
+    public AudioSource Tutorial4;
+    public AudioSource Tutorial5;
+    public AudioSource Tutorial6;
     public GameObject Spawnpoint1;
     public GameObject Spawnpoint2;
+    public GameObject SpawnPoint3;
 
     // Start is called before the first frame update
     void Start()
@@ -47,6 +51,8 @@ public class GameManager : MonoBehaviour
         points = 0;
 
         currenttime = startingtime;
+
+        Tutorial1.Play();
     }
 
     // Update is called once per frame
@@ -145,6 +151,7 @@ public class GameManager : MonoBehaviour
         Tutorial.SetActive(false);
         Quit.SetActive(false);
         tutorialIndex = 0;
+        Tutorial2.Play();
     }
 
     public void Close()
@@ -202,28 +209,32 @@ public class GameManager : MonoBehaviour
     {
         if (tutorialIndex == 0)
         {
-            //Tutorial1.Play();
             Instantiate(TutorialMarker, Spawnpoint1.transform.position, transform.rotation);
             tutorialIndex++;
         }
 
         else if (tutorialIndex == 2)
         {
-            //Tutorial2.Play();
+            Tutorial3.Play();
+
+            
             Instantiate(TutorialMarker, Spawnpoint2.transform.position, transform.rotation);
             tutorialIndex++;
         }
 
         else if (tutorialIndex == 4)
         {
-            Instantiate(Debris[0], Spawnpoint1.transform.position, transform.rotation);
+            Instantiate(Debris[0], SpawnPoint3.transform.position, transform.rotation);
             tutorialIndex++;
-            //Tutorial3.Play();
+            Tutorial4.Play();
+            
         }
 
         else if (tutorialIndex == 6)
         {
+            Tutorial6.Play();
             Menu();
+            tutorial = false;
         }
     }
 }

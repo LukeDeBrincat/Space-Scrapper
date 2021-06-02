@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     public GameObject MainMenu;
     public GameObject TutorialMarker;
 
-    public LineRenderer pointer;
+    public GameObject Pointer;
 
     private bool Spawned = false;
 
@@ -38,9 +38,12 @@ public class GameManager : MonoBehaviour
     public AudioSource Tutorial4;
     public AudioSource Tutorial5;
     public AudioSource Tutorial6;
+    public AudioSource Tutorial7;
+    public AudioSource Music;
     public GameObject Spawnpoint1;
     public GameObject Spawnpoint2;
     public GameObject SpawnPoint3;
+    public GameObject SpawnPoint4;
 
     // Start is called before the first frame update
     void Start()
@@ -50,9 +53,9 @@ public class GameManager : MonoBehaviour
 
         points = 0;
 
-        currenttime = startingtime;
+        Music.Play();
 
-        Tutorial1.Play();
+        currenttime = startingtime;
     }
 
     // Update is called once per frame
@@ -60,13 +63,13 @@ public class GameManager : MonoBehaviour
     {
         if (GameStarted == true)
         {
-            pointer.enabled = false;
+            Pointer.SetActive(false);
 
             if (Spawned == false)
             {
                 for (int i = 0; i < 200; i++)
                 {
-                    Vector3 Coordinate = new Vector3(Random.Range(40, -40), Random.Range(10, -10), Random.Range(-10, -70));
+                    Vector3 Coordinate = new Vector3(Random.Range(40, -40), Random.Range(10, -10), Random.Range(-10, -90));
                     Instantiate(Debris[Random.Range(0, 5)], Coordinate, Quaternion.Euler(Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360)));
                 }
 
@@ -96,6 +99,7 @@ public class GameManager : MonoBehaviour
                 }
 
                 GameStarted = false;
+                Spawned = false;
                 FinalPoints.SetActive(true);
                 FinalPoints.GetComponent<TextMeshProUGUI>().text = "Final Points - " + points;
                 FinalRank.SetActive(true);
@@ -108,7 +112,7 @@ public class GameManager : MonoBehaviour
         {
             TutorialRunThrough();
 
-            pointer.enabled = false;
+            Pointer.SetActive(false);
         }
 
 
@@ -116,7 +120,7 @@ public class GameManager : MonoBehaviour
         {
             Points.SetActive(false);
             Timer.SetActive(false);
-            pointer.enabled = true;
+            Pointer.SetActive(true);
         }
 
     }
@@ -141,6 +145,8 @@ public class GameManager : MonoBehaviour
         Quit.SetActive(false);
         Points.SetActive(true);
         Timer.SetActive(true);
+        minutesLeft = 1;
+        points = 0;
 
     }
 
@@ -152,6 +158,7 @@ public class GameManager : MonoBehaviour
         Quit.SetActive(false);
         tutorialIndex = 0;
         Tutorial2.Play();
+        Music.volume = 0.25f;
     }
 
     public void Close()
@@ -209,15 +216,16 @@ public class GameManager : MonoBehaviour
     {
         if (tutorialIndex == 0)
         {
-            Instantiate(TutorialMarker, Spawnpoint1.transform.position, transform.rotation);
+            Instantiate(TutorialMarker, SpawnPoint4.transform.position, transform.rotation);
             tutorialIndex++;
         }
 
         else if (tutorialIndex == 2)
         {
+            Tutorial2.Stop();
             Tutorial3.Play();
 
-            
+
             Instantiate(TutorialMarker, Spawnpoint2.transform.position, transform.rotation);
             tutorialIndex++;
         }
@@ -226,8 +234,9 @@ public class GameManager : MonoBehaviour
         {
             Instantiate(Debris[0], SpawnPoint3.transform.position, transform.rotation);
             tutorialIndex++;
+            Tutorial3.Stop();
             Tutorial4.Play();
-            
+
         }
 
         else if (tutorialIndex == 6)
@@ -235,6 +244,7 @@ public class GameManager : MonoBehaviour
             Tutorial6.Play();
             Menu();
             tutorial = false;
+            Music.volume = 0.5f;
         }
     }
 }

@@ -43,7 +43,7 @@ public class TrashCan : MonoBehaviour
                 else
                 {
                     GameManager.GetComponent<GameManager>().tutorialIndex++;
-                    GameManager.GetComponent<GameManager>().Tutorial6.Play();
+                    GameManager.GetComponent<GameManager>().Tutorial7.Play();
                 }
             }
 

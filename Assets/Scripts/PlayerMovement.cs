@@ -10,7 +10,6 @@ public class PlayerMovement : MonoBehaviour
     public GameObject RightHand;
 
     public AudioSource Thruster;
-    public AudioSource Music;
 
     private bool Playing;
 
@@ -19,17 +18,26 @@ public class PlayerMovement : MonoBehaviour
 
     public Transform spawn;
 
+    public GameManager GameManager;
+
     // Start is called before the first frame update
     void Start()
     {
-        Music.Play();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Thrust();
-        
+        if (GameManager.GameStarted == true || GameManager.tutorial == true)
+        {
+            Thrust();
+        }
+
+        else
+        {
+            GetComponent<Rigidbody>().velocity = Vector3.zero;
+            transform.position = spawn.position;
+        }
     }
 
     private void Thrust()

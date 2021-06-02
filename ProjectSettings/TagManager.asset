@@ -5,16 +5,22 @@ TagManager:
   serializedVersion: 2
   tags:
   - Debris
+  - UIButton
+  - Pointer
+  - StartButton
+  - TutorialButton
+  - QuitButton
+  - MenuButton
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Debris
+  - Hand
+  - Wal
   - 
   - 
   - 

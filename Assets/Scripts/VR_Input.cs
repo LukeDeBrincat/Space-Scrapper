@@ -5,8 +5,6 @@ using UnityEngine.EventSystems;
 
 public class VR_Input : BaseInput
 {
-    public Camera eventCamera = null;
-
     public OVRInput.Button clickButton = OVRInput.Button.PrimaryIndexTrigger;
     public OVRInput.Controller controller = OVRInput.Controller.All;
     protected override void Awake()
@@ -28,13 +26,4 @@ public class VR_Input : BaseInput
     {
         return OVRInput.GetUp(clickButton, controller);
     }
-
-    public override Vector2 mousePosition
-    {
-        get
-        {
-            return new Vector2(eventCamera.pixelWidth / 2, eventCamera.pixelHeight / 2);
-        }
-    }
-
 }

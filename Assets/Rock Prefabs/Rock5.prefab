@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 7690941953498211822}
   - component: {fileID: -5314953770667839915}
   - component: {fileID: 4878602453092890906}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rock5
   m_TagString: Debris
   m_Icon: {fileID: 0}

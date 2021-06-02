@@ -2,78 +2,92 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class Pointer : MonoBehaviour
+public class Pointer : BaseInput
 {
-    public float defaulLength = 3f;
+    public GameManager GameManager;
 
-    private LineRenderer lineRenderer = null;
+    public OVRInput.Button clickButton = OVRInput.Button.PrimaryIndexTrigger;
+    public OVRInput.Controller controller = OVRInput.Controller.All;
 
-    public EventSystem eventSystem;
-    public StandaloneInputModule inputModule;
-
-    private void Awake()
+    public void OnTriggerStay(Collider other)
     {
-        lineRenderer = GetComponent<LineRenderer>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        UpdateLength();
-    }
-
-    private void UpdateLength()
-    {
-        lineRenderer.SetPosition(0, transform.position);
-        lineRenderer.SetPosition(1, GetEnd());
-    }
-
-    private Vector3 GetEnd()
-    {
-        float distance = GetCanvasDistance();
-        Vector3 endPosition = DefaultEnd(defaulLength);
-
-        if (distance != 0)
+        if (other.transform.tag == "StartButton")
         {
-            endPosition = DefaultEnd(distance);
-        }
+            other.GetComponent<PointerColorChange>().EnterChange();
 
-        return endPosition;
-    }
-
-    private float GetCanvasDistance()
-    {
-        PointerEventData eventData = new PointerEventData(eventSystem);
-        eventData.position = inputModule.inputOverride.mousePosition;
-
-        List<RaycastResult> results = new List<RaycastResult>();
-        eventSystem.RaycastAll(eventData, results);
-
-        RaycastResult closest = FindFirstRaycast(results);
-        float distance = closest.distance;
-
-        distance = Mathf.Clamp(distance, 0, defaulLength);
-        return distance;
-    }
-
-    private RaycastResult FindFirstRaycast(List<RaycastResult> results)
-    {
-        foreach(RaycastResult result in results)
-        {
-            if (!result.gameObject)
+            if (OVRInput.GetDown(clickButton, controller))
             {
-                continue;
+                GameManager.StartGame();
             }
-
-            return result;
         }
 
-        return new RaycastResult();
+        else if (other.transform.tag == "TutorialButton")
+        {
+            other.GetComponent<PointerColorChange>().EnterChange();
+
+            if (OVRInput.Get(clickButton, controller))
+            {
+                GameManager.StartTutorial();
+            }
+        }
+
+        else if (other.transform.tag == "QuitButton")
+        {
+            other.GetComponent<PointerColorChange>().EnterChange();
+
+            if (OVRInput.Get(clickButton, controller))
+            {
+                GameManager.Close();
+            }
+        }
+
+        else if (other.transform.tag == "MenuButton")
+        {
+            other.GetComponent<PointerColorChange>().EnterChange();
+
+            if (OVRInput.Get(clickButton, controller))
+            {
+                GameManager.Menu();
+            }
+        }
     }
 
-    private Vector3 DefaultEnd(float Length)
+    public void OnTriggerExit(Collider other)
     {
-        return transform.position + (transform.forward * defaulLength);
+        if (other.transform.tag == "StartButton")
+        {
+            other.GetComponent<PointerColorChange>().ExitChange();
+        }
+
+        if (other.transform.tag == "TutroialButton")
+        {
+            other.GetComponent<PointerColorChange>().ExitChange();
+        }
+
+        if (other.transform.tag == "QuitButton")
+        {
+            other.GetComponent<PointerColorChange>().ExitChange();
+        }
+
+        if (other.transform.tag == "MenuButton")
+        {
+            other.GetComponent<PointerColorChange>().ExitChange();
+        }
+
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

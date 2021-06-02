@@ -232,7 +232,7 @@ public class GameManager : MonoBehaviour
 
         else if (tutorialIndex == 4)
         {
-            Instantiate(Debris[0], SpawnPoint3.transform.position, transform.rotation);
+            Instantiate(Debris[0], Spawnpoint1.transform.position, transform.rotation);
             tutorialIndex++;
             Tutorial3.Stop();
             Tutorial4.Play();
@@ -241,8 +241,9 @@ public class GameManager : MonoBehaviour
 
         else if (tutorialIndex == 6)
         {
-            Tutorial6.Play();
             Menu();
+            Tutorial6.Stop();
+            Tutorial7.Stop();
             tutorial = false;
             Music.volume = 0.5f;
         }

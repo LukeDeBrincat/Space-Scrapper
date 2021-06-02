@@ -40,7 +40,9 @@ public class GrabbableItems : OVRGrabbable
             renderer.material = chosen;
             GetComponent<Debris>().touching = true;
             Ps.material = chosen;
+            GameManager.GetComponent<GameManager>().Tutorial4.Stop();
             GameManager.GetComponent<GameManager>().Tutorial5.Play();
+            
         }
 
     }
@@ -49,6 +51,6 @@ public class GrabbableItems : OVRGrabbable
     {
         base.GrabEnd(linearVelocity * 5, angularVelocity);
         A.Play();
-
+        GetComponent<Debris>().thrown = true;
     }
 }

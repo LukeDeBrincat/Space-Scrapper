@@ -17,33 +17,38 @@ public class TrashCan : MonoBehaviour
     {
         if (other.transform.tag == "Debris")
         {
-            if (other.GetComponent<Debris>().hidden == colour)
+            if (other.GetComponent<Debris>().thrown == true)
             {
-                if (GameManager.GetComponent<GameManager>().GameStarted)
+                if (other.GetComponent<Debris>().hidden == colour)
                 {
-                    GameManager.GetComponent<GameManager>().points += 20;
-                    Yay.Play();
+                    if (GameManager.GetComponent<GameManager>().GameStarted)
+                    {
+                        GameManager.GetComponent<GameManager>().points += 20;
+                        Yay.Play();
+                    }
+
+                    else
+                    {
+                        GameManager.GetComponent<GameManager>().tutorialIndex++;
+                        GameManager.GetComponent<GameManager>().Tutorial5.Stop();
+                        GameManager.GetComponent<GameManager>().Tutorial6.Play();
+                    }
                 }
 
                 else
                 {
-                    GameManager.GetComponent<GameManager>().tutorialIndex++;
-                    GameManager.GetComponent<GameManager>().Tutorial6.Play();
-                }
-            }
+                    if (GameManager.GetComponent<GameManager>().GameStarted)
+                    {
+                        GameManager.GetComponent<GameManager>().points -= 10;
+                        Nay.Play();
+                    }
 
-            else
-            {
-                if (GameManager.GetComponent<GameManager>().GameStarted)
-                {
-                    GameManager.GetComponent<GameManager>().points -= 10;
-                    Nay.Play();
-                }
-
-                else
-                {
-                    GameManager.GetComponent<GameManager>().tutorialIndex++;
-                    GameManager.GetComponent<GameManager>().Tutorial7.Play();
+                    else
+                    {
+                        GameManager.GetComponent<GameManager>().Tutorial5.Stop();
+                        GameManager.GetComponent<GameManager>().Tutorial7.Play();
+                        Instantiate(GameManager.GetComponent<GameManager>().Debris[0], GameManager.GetComponent<GameManager>().Spawnpoint1.transform.position, transform.rotation);
+                    }
                 }
             }
 

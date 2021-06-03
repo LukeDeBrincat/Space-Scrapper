@@ -33,7 +33,6 @@ public class GameManager : MonoBehaviour
     public int tutorialIndex;
 
     public AudioSource Tutorial1;
-    public AudioSource Tutorial2;
     public AudioSource Tutorial3;
     public AudioSource Tutorial4;
     public AudioSource Tutorial5;
@@ -157,8 +156,8 @@ public class GameManager : MonoBehaviour
         Tutorial.SetActive(false);
         Quit.SetActive(false);
         tutorialIndex = 0;
-        Tutorial2.Play();
         Music.volume = 0.25f;
+        Tutorial1.Play();
     }
 
     public void Close()
@@ -222,7 +221,7 @@ public class GameManager : MonoBehaviour
 
         else if (tutorialIndex == 2)
         {
-            Tutorial2.Stop();
+            Tutorial1.Stop();
             Tutorial3.Play();
 
 

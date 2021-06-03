@@ -61,7 +61,7 @@ public class Pointer : BaseInput
             other.GetComponent<PointerColorChange>().ExitChange();
         }
 
-        if (other.transform.tag == "TutroialButton")
+        if (other.transform.tag == "TutorialButton")
         {
             other.GetComponent<PointerColorChange>().ExitChange();
         }
